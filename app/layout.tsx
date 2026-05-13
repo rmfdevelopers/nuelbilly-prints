@@ -1,18 +1,32 @@
-import { Space_Grotesk, Inter } from 'next/font/google';
-import './globals.css';
+import type { Metadata } from "next";
+import { Cormorant_Garamond, DM_Sans } from "next/font/google";
+import "./globals.css";
 
-const heading = Space_Grotesk({ subsets: ['latin'], variable: '--font-heading', weight: ['400', '700', '900'] });
-const body = Inter({ subsets: ['latin'], variable: '--font-body', weight: ['300', '400', '600'] });
+const heading = Cormorant_Garamond({ 
+  subsets: ["latin"], 
+  weight: ["300", "400", "500", "600", "700"],
+  variable: "--font-heading" 
+});
 
-export const metadata = {
-  title: 'Nuelbilly Prints | High-End Printing Shomolu',
-  description: 'Precision in Every Impression. Luxury packaging and commercial printing in Lagos.',
+const body = DM_Sans({ 
+  subsets: ["latin"], 
+  weight: ["400", "500", "700"],
+  variable: "--font-body" 
+});
+
+export const metadata: Metadata = {
+  title: "NUELBILLY PRINTS | Precision Printing & Premium Packaging",
+  description: "Lagos' premier destination for high-end branding, custom packaging solutions, and artisanal garment printing.",
 };
 
-export default function RootLayout({ children }: { children: React.ReactNode }) {
+export default function RootLayout({
+  children,
+}: Readonly<{
+  children: React.ReactNode;
+}>) {
   return (
     <html lang="en">
-      <body className={`${heading.variable} ${body.variable} font-sans`}>
+      <body className={`${heading.variable} ${body.variable} font-sans antialiased`}>
         {children}
       </body>
     </html>
